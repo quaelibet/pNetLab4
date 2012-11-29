@@ -1,0 +1,132 @@
+Lab 4:
+
+ComunicationComponent:Component
+{
+public delegate ReceiveEventHandler (Object sender, ReceivedEventArgs e);
+public event ReceiveEventHandler received
+
+//odbior
+protected void onReceiveEvent(obj, e)
+if (odebrano!=null)
+	odebranoEvent(this,e)
+	
+//nasluch
+public void sluchaj(int port)
+{
+	IPEndPoint point = new IPEndPoint(IPAddress.Any,port);
+	listener = new Socket(AddressFamily.InerNetworl,SocketType.Stream, ProtocolType.Tcp);
+	
+	listener.Bind(point)
+	
+	listenet.Listen(10)
+	
+	th = new Thread(this.listen);
+	t.Start(listener)
+}
+
+public void Listen(obj data)
+{
+
+Socket listener = data as Socket;
+while(true)
+{
+	try
+	{
+		cliecnt = listener.Accept();
+		byte[] recv = new byte[100];
+		int bytes;
+		string retPage = "";
+	
+		do 
+		{
+			bytes = client.Receive(recv);
+			retPage += Encoding.UTF8.GetString(recv,0, bytes);
+		} while(client.Connected && client.Available >0)
+		
+		OnReceiveEvent(this, new ReceiveEventArgs(retPage,client.RemoteEndPoint.toString()));
+		
+		client.Close();
+	}
+	catch (SocketException e)
+	{
+		return;
+	}
+}
+}
+
+public bool Wyslij(string adres, int port, string tresc)
+{
+	IPHostEntry iphe = this.GetHostEntry(adres);
+	IPEndPoint ipep = new IPEndPoint (iphe.AddressList[iphe.AdddressList.Length==2 ? 1:2],port);
+	
+	try
+	{
+		Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+		
+		s.Connect();
+		
+		vyte[]buff = Encoding.
+		
+		//send
+		...
+		//
+		protected override void Dispose(bool d)
+		{
+			IPEndPoint
+				listenet.Close
+				client
+				thread
+		}
+	}
+}
+
+
+
+
+// Kontrolka
+
+Add ref -> Communication Component
+
+
+nasluchuj_click
+{
+	com.OdebranoEvent + = new 
+}
+
+private delegate void Zapisz(string tekst);
+
+private void Zapisz Odebrane(str tekst)
+{
+	od.Text +=tekst;
+}
+
+private void onDataReceived(obj,e)
+{
+	if (Inve\okeRequired)
+		Invoke(new Zapisz(ZapiszOdebrane), new object[]{"Odebrano od " + e.Sender}
+	else
+		ZapiszOdebrane("Odebrane od " + e.Sender)
+}
+
+
+
+
+Kontrolka:
+
+
+prot override void Dispose(bool d)
+{
+	protected override void Dispose(bool d)
+	{
+		components.Dispose();
+	}
+	if (com!=null)
+	{
+		com.Dispose();
+	}
+}
+
+
+
+Formatka:
+-> ref do kontrolki
